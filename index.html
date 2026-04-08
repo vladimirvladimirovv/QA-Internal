@@ -24,30 +24,26 @@
         }
 
         .sidebar { background: #0d111d; border-right: 1px solid var(--border); }
-        .card { background: var(--card); border: 1px solid var(--border); transition: all 0.2s ease; }
-        .card:hover { border-color: rgba(6, 182, 212, 0.3); transform: translateY(-2px); }
+        .card { background: var(--card); border: 1px solid var(--border); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card:hover { border-color: rgba(6, 182, 212, 0.4); transform: translateY(-2px); box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5); }
         
         .mono { font-family: 'Fira Code', monospace; }
         .accent-text { color: var(--accent); }
         .success-text { color: var(--success); }
 
-        /* Checklist Styles */
-        .check-container input[type="checkbox"] {
-            accent-color: var(--success);
-            width: 1.2rem;
-            height: 1.2rem;
-            cursor: pointer;
-        }
+        .nav-link.active { color: white; background: rgba(6, 182, 212, 0.1); border-left: 3px solid var(--accent); }
 
-        /* Detail/Summary Animation */
-        details summary::-webkit-details-marker { display:none; }
-        details[open] summary i { transform: rotate(180deg); }
-        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+
         @media print {
             .no-print { display: none; }
             .lg\:ml-72 { margin-left: 0 !important; }
             body { background: white; color: black; }
-            .card { border: 1px solid #ddd; break-inside: avoid; }
+            .card { border: 1px solid #ddd; break-inside: avoid; color: black; }
+            .accent-text, .success-text { color: #000 !important; font-weight: bold; }
         }
     </style>
 </head>
@@ -56,300 +52,248 @@
     <aside class="fixed left-0 top-0 h-screen w-72 sidebar hidden lg:flex flex-col z-50 no-print">
         <div class="p-8 border-b border-white/5">
             <h1 class="text-white font-bold text-lg tracking-tight leading-tight">Vladimir Vladimirov</h1>
-            <p class="text-[10px] uppercase tracking-[0.3em] accent-text font-bold mt-1">Quality Engineering Hub</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] accent-text font-bold mt-1">QA Engineering Hub</p>
         </div>
         
-        <nav class="flex-1 overflow-y-auto p-4 space-y-1 text-sm">
-            <a href="#best-practices" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="shield-check" class="w-4 h-4"></i> Best Practices
-            </a>
-            <a href="#api-testing" class="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="webhook" class="w-4 h-4"></i> API Guidelines
-            </a>
-            <a href="#risk-areas" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="alert-triangle" class="w-4 h-4"></i> Risk & Mitigation
-            </a>
-            <a href="#bug-standards" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="bug" class="w-4 h-4"></i> Bug Standards
-            </a>
-            <a href="#frontend" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="monitor" class="w-4 h-4"></i> Frontend Testing
-            </a>
-            <a href="#tools" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="cpu" class="w-4 h-4"></i> Senior Toolkit
-            </a>
-            <a href="#metrics" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 hover:text-white transition-all">
-                <i data-lucide="bar-chart" class="w-4 h-4"></i> Metrics & KPIs
-            </a>
+        <nav class="flex-1 overflow-y-auto p-4 space-y-1 text-sm font-medium">
+            <a href="#philosophy" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="shield" class="w-4 h-4"></i> QA Philosophy</a>
+            <a href="#strategy" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="map" class="w-4 h-4"></i> Testing Strategy</a>
+            <a href="#api" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="webhook" class="w-4 h-4"></i> API Guidelines</a>
+            <a href="#investigation" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="search" class="w-4 h-4"></i> Investigation Loop</a>
+            <a href="#bugs" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="bug" class="w-4 h-4"></i> Bug Standards</a>
+            <a href="#toolkit" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="cpu" class="w-4 h-4"></i> Senior Toolkit</a>
+            <a href="#templates" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="file-text" class="w-4 h-4"></i> Templates</a>
+            <a href="#release" class="nav-link flex items-center gap-3 p-3 rounded-lg hover:text-white transition-all"><i data-lucide="package" class="w-4 h-4"></i> Release Traceability</a>
         </nav>
 
         <div class="p-6 border-t border-white/5">
-            <p class="text-[9px] uppercase tracking-widest text-slate-600 mb-4">Finest Edition v5.2</p>
-            <button onclick="window.print()" class="w-full py-2 border border-cyan-500/30 text-cyan-500 rounded text-xs font-bold hover:bg-cyan-500 hover:text-white transition-all">EXPORT RESOURCE</button>
+            <button onclick="window.print()" class="w-full py-2.5 border border-cyan-500/30 text-cyan-500 rounded-lg text-xs font-bold hover:bg-cyan-500 hover:text-white transition-all flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-3 h-3"></i> EXPORT HUB PDF
+            </button>
         </div>
     </aside>
 
     <main class="lg:ml-72 w-full min-h-screen pb-20 px-6 md:px-16">
         
         <header class="py-20 border-b border-white/5">
-            <h1 class="text-5xl font-extrabold text-white mb-4 tracking-tighter">Vladimir Vladimirov <span class="accent-text">QA HUB</span></h1>
+            <h1 class="text-5xl font-extrabold text-white mb-4 tracking-tighter italic">Vladimir Vladimirov <span class="accent-text">QA HUB</span></h1>
             <p class="text-sm uppercase tracking-[0.3em] font-medium text-slate-500">
                 Quality as a Strategy <span class="mx-3 opacity-20">|</span> 5+ Years of Engineering Excellence
             </p>
         </header>
 
-        <section id="best-practices" class="py-16 space-y-8">
+        <section id="philosophy" class="py-16 space-y-8">
             <div class="flex items-center gap-4">
-                <h2 class="text-2xl font-bold text-white uppercase tracking-tight">01. QA Best Practices</h2>
+                <h2 class="text-2xl font-bold text-white uppercase tracking-tight">01. QA Philosophy</h2>
                 <div class="h-[1px] flex-1 bg-white/5"></div>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card p-6 rounded-2xl space-y-4">
-                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center accent-text">
-                        <i data-lucide="fast-forward"></i>
-                    </div>
-                    <h4 class="text-white font-bold">Shift-Left Testing</h4>
-                    <p class="text-xs leading-relaxed">Early involvement in refinement and design phases. Reviewing PRDs for logical contradictions before a single line of code is written.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8 rounded-3xl space-y-4 border-l-4 border-l-cyan-500">
+                    <h3 class="text-white font-bold text-lg">Risk Mitigation > Bug Finding</h3>
+                    <p class="text-sm leading-relaxed">QA is the bridge between business requirements and technical execution. My goal isn't just to report that something is broken, but to evaluate the <strong>Risk Impact</strong> on the user and the revenue stream.</p>
                 </div>
-                <div class="card p-6 rounded-2xl space-y-4">
-                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center success-text">
-                        <i data-lucide="microscope"></i>
-                    </div>
-                    <h4 class="text-white font-bold">Risk-Based Prioritization</h4>
-                    <p class="text-xs leading-relaxed">Focusing 80% of effort on core business flows (Identity, Payments, Data Integrity) where failure impact is highest.</p>
-                </div>
-                <div class="card p-6 rounded-2xl space-y-4">
-                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
-                        <i data-lucide="database"></i>
-                    </div>
-                    <h4 class="text-white font-bold">Data Management</h4>
-                    <p class="text-xs leading-relaxed">Utilizing clean, versioned test data sets in Staging. Ensuring no PII (Sensitive Data) is ever used or exposed in test environments.</p>
+                <div class="card p-8 rounded-3xl space-y-4">
+                    <h3 class="text-white font-bold text-lg">Think like a User, Test like a Breaker</h3>
+                    <p class="text-sm leading-relaxed">Empathy for the user drives functional testing; technical curiosity drives edge-case discovery. I advocate for <strong>Shift-Left</strong>, ensuring QA is present during the design phase to prevent bugs before they are coded.</p>
                 </div>
             </div>
         </section>
 
-        <section id="api-testing" class="py-16 space-y-8">
+        <section id="strategy" class="py-16 space-y-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">02. Testing Strategy</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card p-6 rounded-2xl">
+                    <h4 class="text-cyan-500 font-bold mb-3 uppercase text-xs tracking-widest">Sanity & Smoke</h4>
+                    <p class="text-xs leading-relaxed text-slate-400">Rapid validation of core business flows (Login, Checkout, Profile) after deployment to ensure the environment is stable.</p>
+                </div>
+                <div class="card p-6 rounded-2xl">
+                    <h4 class="text-emerald-500 font-bold mb-3 uppercase text-xs tracking-widest">Regression</h4>
+                    <p class="text-xs leading-relaxed text-slate-400">Automated and manual verification that new changes haven't degraded existing functionality, focused on high-risk areas.</p>
+                </div>
+                <div class="card p-6 rounded-2xl">
+                    <h4 class="text-purple-500 font-bold mb-3 uppercase text-xs tracking-widest">Exploratory</h4>
+                    <p class="text-xs leading-relaxed text-slate-400">Unstructured, time-boxed sessions to discover edge cases that scripted tests might miss, mimicking "wild" user behavior.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="api" class="py-16 space-y-8">
             <div class="flex items-center gap-4">
-                <h2 class="text-2xl font-bold text-white uppercase tracking-tight">02. API Testing Guidelines</h2>
+                <h2 class="text-2xl font-bold text-white uppercase tracking-tight">03. API Guidelines (Postman)</h2>
                 <div class="h-[1px] flex-1 bg-white/5"></div>
             </div>
-            
-            <div class="card rounded-2xl overflow-hidden">
+            <div class="card rounded-3xl overflow-hidden">
                 <table class="w-full text-left text-sm">
-                    <thead class="bg-slate-900/50 border-b border-white/5">
+                    <thead class="bg-slate-900/80 border-b border-white/5">
                         <tr>
-                            <th class="p-4 font-bold text-white">Status Code</th>
-                            <th class="p-4 font-bold text-white">QA Focus Area</th>
-                            <th class="p-4 font-bold text-white">Verification Expectation</th>
+                            <th class="p-5 font-bold text-white">Code Category</th>
+                            <th class="p-5 font-bold text-white">Vladimir's QA Expectation</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-white/5">
                         <tr>
-                            <td class="p-4 mono success-text">200 / 201</td>
-                            <td class="p-4">Happy Path</td>
-                            <td class="p-4 text-xs">Resource created and persists in DB (Verified via DBeaver).</td>
+                            <td class="p-5"><span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded mono text-xs">200/201 Success</span></td>
+                            <td class="p-5 text-slate-400">Check payload matches schema and data persists in DB via DBeaver.</td>
                         </tr>
                         <tr>
-                            <td class="p-4 mono text-yellow-500">400 / 422</td>
-                            <td class="p-4">Input Validation</td>
-                            <td class="p-4 text-xs">Meaningful error messages for missing required fields or type mismatch.</td>
+                            <td class="p-5"><span class="px-2 py-1 bg-yellow-500/10 text-yellow-500 rounded mono text-xs">400 Bad Request</span></td>
+                            <td class="p-5 text-slate-400">Validation errors must be meaningful and localized, not generic.</td>
                         </tr>
                         <tr>
-                            <td class="p-4 mono text-orange-500">401 / 403</td>
-                            <td class="p-4">Security</td>
-                            <td class="p-4 text-xs">JWT token expiry, invalid permissions, or RBAC restrictions.</td>
+                            <td class="p-5"><span class="px-2 py-1 bg-orange-500/10 text-orange-500 rounded mono text-xs">401/403 Auth</span></td>
+                            <td class="p-5 text-slate-400">Verify JWT expiration and RBAC (Role-Based Access Control).</td>
                         </tr>
                         <tr>
-                            <td class="p-4 mono text-red-500">500 / 503</td>
-                            <td class="p-4">Resilience</td>
-                            <td class="p-4 text-xs">Investigate logs in Grafana. Check for silent logic crashes or downstream timeouts.</td>
+                            <td class="p-5"><span class="px-2 py-1 bg-red-500/10 text-red-500 rounded mono text-xs">500/503 Error</span></td>
+                            <td class="p-5 text-slate-400">Failure must be logged in Grafana with a unique TraceID for debugging.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 gap-6 mt-6">
-                <div class="p-6 bg-black/30 rounded-2xl border border-white/5">
-                    <h4 class="text-xs font-bold text-white uppercase mb-4 tracking-widest">Advanced API Checks</h4>
-                    <ul class="space-y-3 text-xs">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 success-text"></i> Idempotency: Duplicate POST requests don't create multiple entries.</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 success-text"></i> Performance: Response times within SLA (e.g., < 200ms).</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 success-text"></i> Consistency: Payload matches Swagger/OpenAPI contract exactly.</li>
+        <section id="investigation" class="py-16 space-y-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">04. The Investigation Loop</h2>
+            <div class="relative pl-8 space-y-12 border-l-2 border-white/5">
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.5)]"></div>
+                    <h4 class="text-white font-bold mb-2">1. Frontend Validation</h4>
+                    <p class="text-sm text-slate-400">Inspect the browser console (F12). Is it a UI crash or a failed network call? Identify the payload and request headers.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-cyan-500"></div>
+                    <h4 class="text-white font-bold mb-2">2. API Isolation (Postman)</h4>
+                    <p class="text-sm text-slate-400">Replicate the request in Postman. Does the endpoint fail outside the UI? This isolates the bug to either Frontend or Backend.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-cyan-500"></div>
+                    <h4 class="text-white font-bold mb-2">3. Observability (Grafana)</h4>
+                    <p class="text-sm text-slate-400">Search for the Trace ID or User ID in Grafana logs. Look for Stack Traces or DB connection timeouts.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-0 w-4 h-4 rounded-full bg-emerald-500"></div>
+                    <h4 class="text-white font-bold mb-2">4. Persistence Check (DBeaver)</h4>
+                    <p class="text-sm text-slate-400">Run a SQL query to check the DB state. Did the API claim it saved the data, but the DB remains unchanged? (Silent Failure).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="bugs" class="py-16 space-y-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">05. Bug Reporting Standards</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8 rounded-3xl space-y-4">
+                    <h4 class="text-white font-bold">Severity vs Priority</h4>
+                    <ul class="text-xs space-y-4">
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">Critical:</span> System crash, data loss, security breach. (Must fix now).</li>
+                        <li class="flex gap-3"><span class="text-orange-400 font-bold">High:</span> Major feature broken with no workaround.</li>
+                        <li class="flex gap-3"><span class="text-yellow-500 font-bold">Medium:</span> Feature bug with a reasonable workaround.</li>
+                        <li class="flex gap-3"><span class="text-slate-500 font-bold">Low:</span> UI polish, typos, or minor visual issues.</li>
+                    </ul>
+                </div>
+                <div class="bg-black/40 border border-white/5 p-8 rounded-3xl space-y-4">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-slate-500">Common Mistakes to Avoid</h4>
+                    <ul class="text-xs space-y-3 text-slate-400">
+                        <li>❌ Vague Titles: "Button doesn't work"</li>
+                        <li>❌ Missing Steps: "Try to login" (Need credentials/env)</li>
+                        <li>❌ No Evidence: Reports without logs or screenshots.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="risk-areas" class="py-16 space-y-8">
-            <h2 class="text-2xl font-bold text-white uppercase">03. Risk Areas & Mitigation</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <details class="group card p-6 rounded-2xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-white">
-                        <span>High-Risk Scenario: Concurrency</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
-                    </summary>
-                    <div class="mt-4 text-xs space-y-3 text-slate-400">
-                        <p><strong>Impact:</strong> Data corruption when two users edit the same resource simultaneously.</p>
-                        <p><strong>Mitigation:</strong> Implement and test optimistic locking or versioning. Test using race-condition scripts in Postman.</p>
+        <section id="toolkit" class="py-16 space-y-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">06. The Senior Toolkit</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="card p-6 rounded-2xl border-b-4 border-b-cyan-500">
+                    <h5 class="text-white font-bold text-sm mb-2">Playwright</h5>
+                    <p class="text-[10px] leading-relaxed">E2E Automation. Leveraging Trace Viewers and fast parallel execution for Regression.</p>
+                </div>
+                <div class="card p-6 rounded-2xl border-b-4 border-b-emerald-500">
+                    <h5 class="text-white font-bold text-sm mb-2">Postman</h5>
+                    <p class="text-[10px] leading-relaxed">API Testing. Complex collections with environment variables and pre-request scripts.</p>
+                </div>
+                <div class="card p-6 rounded-2xl border-b-4 border-b-purple-500">
+                    <h5 class="text-white font-bold text-sm mb-2">Grafana</h5>
+                    <p class="text-[10px] leading-relaxed">Observability. Monitoring error spikes and digging into microservice logs.</p>
+                </div>
+                <div class="card p-6 rounded-2xl border-b-4 border-b-orange-500">
+                    <h5 class="text-white font-bold text-sm mb-2">DBeaver</h5>
+                    <p class="text-[10px] leading-relaxed">SQL Investigation. Validating data integrity, constraints, and record history.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="templates" class="py-16 space-y-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">07. Ready-to-Use Templates</h2>
+            <div class="bg-slate-900 border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
+                <div class="p-4 bg-slate-800/50 flex items-center justify-between border-b border-white/5">
+                    <span class="mono text-[10px] uppercase font-bold text-slate-500">Jira_Bug_Template.md</span>
+                    <i data-lucide="copy" class="w-4 h-4 text-slate-600 hover:text-white cursor-pointer"></i>
+                </div>
+                <div class="p-8 mono text-xs leading-loose text-emerald-400">
+                    <p class="text-white font-bold"># [SERVICE] - BUG TITLE</p>
+                    <p>## Summary</p>
+                    <p>A brief description of the issue.</p>
+                    <p>## Steps to Reproduce</p>
+                    <p>1. User logs in with [Role]<br>2. Navigate to [URL]<br>3. Perform [Action]</p>
+                    <p>## Expected vs Actual</p>
+                    <p>Expected: 201 Created<br>Actual: 500 Internal Error</p>
+                    <p>## Environment</p>
+                    <p>Browser: Chrome 120 | Env: Staging | TraceID: tx_882</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="release" class="py-16 space-y-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-tight">08. Release Traceability</h2>
+            <div class="card p-8 rounded-3xl space-y-6">
+                <p class="text-sm">Releases are not just code deployments; they are audit trails. Every release note must include:</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="space-y-2">
+                        <h5 class="text-white font-bold text-xs uppercase">Features</h5>
+                        <p class="text-[10px] text-slate-500 italic">Newly added capabilities with linked Jira tickets.</p>
                     </div>
-                </details>
-                <details class="group card p-6 rounded-2xl cursor-pointer">
-                    <summary class="flex justify-between items-center font-bold text-white">
-                        <span>High-Risk Scenario: 3rd Party Failure</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
-                    </summary>
-                    <div class="mt-4 text-xs space-y-3 text-slate-400">
-                        <p><strong>Impact:</strong> System hang or 500 errors when a gateway (like Stripe or Twilio) goes down.</p>
-                        <p><strong>Mitigation:</strong> Test circuit breaker patterns. Ensure graceful degradation of the UI for the end-user.</p>
+                    <div class="space-y-2">
+                        <h5 class="text-white font-bold text-xs uppercase">Fixes</h5>
+                        <p class="text-[10px] text-slate-500 italic">Resolved bugs and performance improvements.</p>
                     </div>
-                </details>
-            </div>
-        </section>
-
-        <section id="bug-standards" class="py-16 space-y-8">
-            <h2 class="text-2xl font-bold text-white uppercase">04. Bug Reporting Standards</h2>
-            <div class="bg-slate-900 p-8 rounded-3xl border border-white/5 space-y-6">
-                <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    <span class="ml-4 mono text-[10px] text-slate-500">Vladimir_Standard_V2.md</span>
+                    <div class="space-y-2">
+                        <h5 class="text-white font-bold text-xs uppercase">QA Verdict</h5>
+                        <p class="text-[10px] text-slate-500 italic">Sign-off status, known issues, and rollback plan.</p>
+                    </div>
                 </div>
-                <div class="mono text-sm space-y-2 text-emerald-500/80">
-                    <p class="text-white font-bold">TITLE: [Service] - Short Description - [Condition]</p>
-                    <p>---</p>
-                    <p>**Steps to Reproduce:**</p>
-                    <p>1. Login as User A (Standard Role)</p>
-                    <p>2. Attempt to POST /v1/checkout with invalid CVV</p>
-                    <p>**Expected:** 402 Payment Required</p>
-                    <p>**Actual:** 500 Internal Server Error (Silent Crash)</p>
-                    <p>---</p>
-                    <p>**Evidence:**</p>
-                    <p>Log Trace: <span class="text-cyan-400">tx_id_9901_prod</span></p>
-                    <p>Environment: Staging (Release 2.4)</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="frontend" class="py-16 space-y-8">
-            <h2 class="text-2xl font-bold text-white uppercase">05. Frontend Testing Architecture</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card p-6 rounded-2xl">
-                    <h4 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 accent-text"></i> State Management</h4>
-                    <p class="text-xs">Ensuring UI reflects backend state changes in real-time. Testing Redux/Vuex state persistence after browser refresh and async-await race conditions.</p>
-                </div>
-                <div class="card p-6 rounded-2xl">
-                    <h4 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 accent-text"></i> Cross-Device Integrity</h4>
-                    <p class="text-xs">Responsive validation from iPhone SE to 4K Ultrawide. Testing interactive elements (modals, dropdowns) specifically for touch-point accuracy.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tools" class="py-16 space-y-8">
-            <h2 class="text-2xl font-bold text-white uppercase">06. Senior QA Toolkit</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="card p-6 rounded-2xl text-center">
-                    <h5 class="text-white font-bold text-sm mb-2">Automation</h5>
-                    <p class="accent-text text-lg font-black">Playwright</p>
-                    <p class="text-[10px] text-slate-500 mt-2">End-to-End browser automation & speed.</p>
-                </div>
-                <div class="card p-6 rounded-2xl text-center">
-                    <h5 class="text-white font-bold text-sm mb-2">API</h5>
-                    <p class="success-text text-lg font-black">Postman</p>
-                    <p class="text-[10px] text-slate-500 mt-2">Advanced collections & pre-request scripts.</p>
-                </div>
-                <div class="card p-6 rounded-2xl text-center">
-                    <h5 class="text-white font-bold text-sm mb-2">Analysis</h5>
-                    <p class="text-purple-400 text-lg font-black">Grafana</p>
-                    <p class="text-[10px] text-slate-500 mt-2">Log monitoring and observability spikes.</p>
-                </div>
-                <div class="card p-6 rounded-2xl text-center">
-                    <h5 class="text-white font-bold text-sm mb-2">Data</h5>
-                    <p class="text-orange-400 text-lg font-black">DBeaver</p>
-                    <p class="text-[10px] text-slate-500 mt-2">Deep SQL verification & state validation.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="checklists" class="py-16 space-y-8">
-            <h2 class="text-2xl font-bold text-white uppercase">07. Release Readiness Checklist</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-4 check-container">
-                    <label class="flex items-center gap-4 card p-4 rounded-xl cursor-pointer">
-                        <input type="checkbox"> <span class="text-xs">Smoke tests passed in Pre-Prod Environment</span>
-                    </label>
-                    <label class="flex items-center gap-4 card p-4 rounded-xl cursor-pointer">
-                        <input type="checkbox"> <span class="text-xs">API Contract validation (Postman Newman)</span>
-                    </label>
-                    <label class="flex items-center gap-4 card p-4 rounded-xl cursor-pointer">
-                        <input type="checkbox"> <span class="text-xs">Rollback procedure confirmed with DevOps</span>
-                    </label>
-                </div>
-                <div class="space-y-4 check-container">
-                    <label class="flex items-center gap-4 card p-4 rounded-xl cursor-pointer">
-                        <input type="checkbox"> <span class="text-xs">Grafana alerting configured for new endpoints</span>
-                    </label>
-                    <label class="flex items-center gap-4 card p-4 rounded-xl cursor-pointer">
-                        <input type="checkbox"> <span class="text-xs">Database migrations verified for consistency</span>
-                    </label>
-                </div>
-            </div>
-        </section>
-
-        <section id="metrics" class="py-16 space-y-8">
-            <h2 class="text-2xl font-bold text-white uppercase">08. Impact Metrics (KPIs)</h2>
-            <div class="overflow-x-auto rounded-2xl border border-white/5">
-                <table class="w-full text-left text-sm">
-                    <thead class="bg-slate-900/50">
-                        <tr>
-                            <th class="p-6 font-bold text-white">Metric Name</th>
-                            <th class="p-6 font-bold text-white">Definition & Value</th>
-                            <th class="p-6 font-bold text-white">Senior Target</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr>
-                            <td class="p-6 font-bold text-white">Defect Leakage</td>
-                            <td class="p-6">Bugs found in Prod vs. Testing</td>
-                            <td class="p-6 success-text"> < 2% per Release</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-bold text-white">MTTD (Mean Time to Detect)</td>
-                            <td class="p-6">Time from deployment to bug find</td>
-                            <td class="p-6 success-text"> < 2 Hours (via Alerts)</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 font-bold text-white">Automation ROI</td>
-                            <td class="p-6">Time saved per regression cycle</td>
-                            <td class="p-6 success-text"> > 40 Hours / Month</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
         <footer class="py-20 border-t border-white/5 text-center">
             <p class="text-[10px] uppercase font-bold tracking-[0.6em] accent-text mb-4">Vladimir Vladimirov QA Engineering</p>
-            <p class="text-xs text-slate-600 italic">Built for Precision • 2026 Release Hub</p>
+            <p class="text-xs text-slate-600 italic">Built for Technical Precision • v5.5 Release</p>
         </footer>
 
     </main>
 
     <script>
+        // Initialize Icons
         lucide.createIcons();
-        
-        // Active Scroll Spy
+
+        // Scrollspy for Sidebar
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
         window.addEventListener('scroll', () => {
             let current = "";
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 120) { current = section.getAttribute('id'); }
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
             });
+
             navLinks.forEach(link => {
-                link.classList.remove('bg-white/5', 'text-white');
-                if (link.getAttribute('href').includes(current)) { link.classList.add('bg-white/5', 'text-white'); }
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
             });
         });
     </script>
