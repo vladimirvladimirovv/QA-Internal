@@ -6,261 +6,323 @@
     <title>Vladimir Vladimirov | QA HUB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --card: #0a0a0a;
+            --bg: #000000;
+            --card: #0a0f1e;
             --accent: #06b6d4;
             --success: #10b981;
-            --border: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.07);
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            color: #a1a1aa;
+            color: #94a3b8;
             scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        .sidebar { background: #000000; border-right: 1px solid var(--border); }
-        .card { background: var(--card); border: 1px solid var(--border); }
-        
-        .mono { font-family: 'Fira Code', monospace; }
-        .accent-text { color: var(--accent); }
-        .success-text { color: var(--success); }
+        /* Sidebar Glassmorphism */
+        .sidebar {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border);
+        }
 
-        .nav-link { color: #52525b; transition: all 0.3s ease; }
-        .nav-link:hover, .nav-link.active { color: #fff; }
-        .nav-link.active { border-right: 2px solid var(--accent); }
+        /* High-Tech Nav Links */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 8px;
+            color: #64748b;
+        }
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(6, 182, 212, 0.05);
+        }
+        .nav-link.active {
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.1);
+            box-shadow: inset 0 0 10px rgba(6, 182, 212, 0.1);
+        }
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            height: 60%;
+            width: 4px;
+            background: var(--accent);
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 15px var(--accent);
+        }
 
+        /* Neon Card Effect */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.8);
+            transform: translateY(-2px);
+        }
+
+        .accent-glow { text-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+
+        /* Custom Checkbox */
         input[type="checkbox"] {
             accent-color: var(--accent);
-            background: transparent;
-            border: 1px solid var(--border);
+            width: 1.1rem;
+            height: 1.1rem;
+            cursor: pointer;
+            filter: brightness(0.8);
         }
 
         @media print {
             .no-print { display: none; }
-            .lg\:ml-64 { margin-left: 0 !important; }
+            .lg\:ml-72 { margin-left: 0 !important; }
             body { background: white; color: black; }
         }
     </style>
 </head>
 <body class="flex">
 
-    <aside class="fixed left-0 top-0 h-screen w-64 sidebar hidden lg:flex flex-col z-50 no-print">
-        <div class="p-10">
-            <h1 class="text-white font-bold text-xl tracking-tighter italic">V.V. QA HUB</h1>
+    <aside class="fixed left-0 top-0 h-screen w-72 sidebar hidden lg:flex flex-col z-50 no-print">
+        <div class="p-8 border-b border-white/5">
+            <h1 class="text-white font-extrabold text-xl tracking-tighter accent-glow italic">V. VLADIMIROV</h1>
+            <p class="text-[9px] uppercase tracking-[0.4em] text-cyan-500 font-bold mt-1">QA Engineering Hub</p>
         </div>
         
-        <nav class="flex-1 px-8 space-y-6 text-sm font-medium">
-            <a href="#philosophy" class="nav-link block">01 Philosophy</a>
-            <a href="#strategy" class="nav-link block">02 Strategy</a>
-            <a href="#api" class="nav-link block">03 API Standards</a>
-            <a href="#scenarios" class="nav-link block">04 Scenarios</a>
-            <a href="#bugs" class="nav-link block">05 Bug Standards</a>
-            <a href="#toolkit" class="nav-link block">06 Senior Toolkit</a>
-            <a href="#checklist" class="nav-link block">07 Readiness</a>
-            <a href="#metrics" class="nav-link block">08 Metrics</a>
+        <nav class="flex-1 overflow-y-auto p-4 py-8 space-y-2 text-xs font-semibold uppercase tracking-widest">
+            <a href="#philosophy" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="crosshair" class="w-4 h-4"></i> Philosophy
+            </a>
+            <a href="#strategy" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="git-merge" class="w-4 h-4"></i> Strategy
+            </a>
+            <a href="#api" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="zap" class="w-4 h-4"></i> API Standards
+            </a>
+            <a href="#risks" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="shield-alert" class="w-4 h-4"></i> Risk Areas
+            </a>
+            <a href="#bugs" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="terminal" class="w-4 h-4"></i> Bug Standards
+            </a>
+            <a href="#toolkit" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="command" class="w-4 h-4"></i> Toolkit
+            </a>
+            <a href="#checklists" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="layers" class="w-4 h-4"></i> Readiness
+            </a>
+            <a href="#metrics" class="nav-link flex items-center gap-4 p-4">
+                <i data-lucide="activity" class="w-4 h-4"></i> Metrics
+            </a>
         </nav>
 
-        <div class="p-10">
-            <button onclick="window.print()" class="text-[10px] uppercase tracking-widest text-zinc-600 hover:text-white transition-all">Export Reference</button>
+        <div class="p-8 border-t border-white/5">
+            <button onclick="window.print()" class="w-full py-3 bg-cyan-600/10 border border-cyan-500/20 text-cyan-400 rounded-lg text-[10px] font-black hover:bg-cyan-500 hover:text-white transition-all uppercase tracking-widest">
+                Print Technical Manual
+            </button>
         </div>
     </aside>
 
-    <main class="lg:ml-64 w-full min-h-screen pb-32 px-8 md:px-24">
+    <main class="lg:ml-72 w-full min-h-screen pb-32 px-6 md:px-16">
         
-        <header class="py-32">
-            <h1 class="text-6xl font-bold text-white mb-6 tracking-tighter">
-                Vladimir Vladimirov <span class="accent-text">QA HUB</span>
+        <header class="py-28">
+            <h1 class="text-6xl font-black text-white mb-6 tracking-tighter italic">
+                Vladimir Vladimirov <span class="text-cyan-500">QA HUB</span>
             </h1>
-            <p class="text-xs uppercase tracking-[0.5em] font-semibold text-zinc-500">
+            <p class="text-[11px] uppercase tracking-[0.6em] font-bold text-slate-500">
                 Quality as a Strategy <span class="mx-4 opacity-20">|</span> 5+ Years of Engineering Excellence
             </p>
         </header>
 
         <section id="philosophy" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">01 / Philosophy</h2>
             <div class="grid md:grid-cols-2 gap-16">
-                <div class="space-y-4">
-                    <h3 class="text-white text-2xl font-semibold">Risk Intelligence</h3>
-                    <p class="leading-relaxed text-zinc-400">Quality is not a department, it's a culture of risk mitigation. I focus on technical rigor during the design phase to prevent rework and ensure business-critical flows are bulletproof.</p>
+                <div class="space-y-6">
+                    <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest">01 / Logic</h2>
+                    <h3 class="text-3xl font-bold text-white tracking-tight">Risk Mitigation > Bug Finding</h3>
+                    <p class="text-sm leading-relaxed">QA is not a department; it's a culture of technical rigor. I focus on identifying business risk through <strong>Shift-Left advocacy</strong>, ensuring quality is baked into the design doc before the first line of code is written.</p>
                 </div>
-                <div class="space-y-4">
-                    <h3 class="text-white text-2xl font-semibold">Shift-Left Advocacy</h3>
-                    <p class="leading-relaxed text-zinc-400">By collaborating early with developers, we reduce the cost of bugs by 10x. My approach is to bridge the gap between complex backend logic and a seamless user experience.</p>
+                <div class="card p-8 rounded-3xl bg-gradient-to-br from-cyan-500/5 to-transparent">
+                    <h4 class="text-white font-bold mb-4">Core Mindset</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed italic">"A good tester compares the invisible to the ambiguous. I don't just find defects; I provide the engineering team with actionable intelligence to prevent them."</p>
                 </div>
             </div>
         </section>
 
         <section id="strategy" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">02 / Testing Strategy</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs leading-loose">
-                <div class="space-y-4">
-                    <h4 class="text-white font-bold uppercase tracking-widest">Functional</h4>
-                    <p>Validation of requirements, happy path scenarios, and cross-browser stability.</p>
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">02 / Strategy</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="card p-6 rounded-2xl">
+                    <h5 class="text-white font-bold text-xs uppercase mb-2">Smoke</h5>
+                    <p class="text-[10px] text-slate-500">Validation of high-revenue flows post-deployment.</p>
                 </div>
-                <div class="space-y-4">
-                    <h4 class="text-white font-bold uppercase tracking-widest">End-to-End</h4>
-                    <p>Complex user journeys across multiple microservices and third-party gateways.</p>
+                <div class="card p-6 rounded-2xl border-emerald-500/20">
+                    <h5 class="text-emerald-500 font-bold text-xs uppercase mb-2">Regression</h5>
+                    <p class="text-[10px] text-slate-500">Ensuring zero degradation in core system stability.</p>
                 </div>
-                <div class="space-y-4">
-                    <h4 class="text-white font-bold uppercase tracking-widest">Exploratory</h4>
-                    <p>Context-driven testing to uncover edge cases that automated scripts often miss.</p>
+                <div class="card p-6 rounded-2xl">
+                    <h5 class="text-white font-bold text-xs uppercase mb-2">E2E</h5>
+                    <p class="text-[10px] text-slate-500">Complex cross-service user journey mapping.</p>
+                </div>
+                <div class="card p-6 rounded-2xl">
+                    <h5 class="text-white font-bold text-xs uppercase mb-2">Exploratory</h5>
+                    <p class="text-[10px] text-slate-500">Context-driven investigation of edge-case logic.</p>
                 </div>
             </div>
         </section>
 
         <section id="api" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">03 / API Standards</h2>
-            <div class="card p-1 rounded-sm overflow-hidden">
-                <table class="w-full text-left text-[11px] uppercase tracking-tighter">
-                    <thead class="border-b border-white/5 text-zinc-500">
-                        <tr>
-                            <th class="p-6">Status</th>
-                            <th class="p-6">QA Context</th>
-                            <th class="p-6">Verification logic</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-white divide-y divide-white/5">
-                        <tr>
-                            <td class="p-6 mono accent-text">200/201</td>
-                            <td class="p-6">Success</td>
-                            <td class="p-6 text-zinc-500">Schema matches, Data persisted in DB.</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 mono text-yellow-500">400/422</td>
-                            <td class="p-6">Validation</td>
-                            <td class="p-6 text-zinc-500">Meaningful error response provided.</td>
-                        </tr>
-                        <tr>
-                            <td class="p-6 mono text-red-500">401/403</td>
-                            <td class="p-6">Security</td>
-                            <td class="p-6 text-zinc-500">Unauthorized access blocked & logged.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">03 / API Standards</h2>
+            <div class="card rounded-2xl overflow-hidden shadow-2xl">
+                <div class="p-1 overflow-x-auto">
+                    <table class="w-full text-left text-[11px] mono">
+                        <thead class="text-slate-500 border-b border-white/5 uppercase">
+                            <tr>
+                                <th class="p-6">Status</th>
+                                <th class="p-6">Type</th>
+                                <th class="p-6">QA Validation Protocol</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-300 divide-y divide-white/5">
+                            <tr class="hover:bg-cyan-500/5 transition-colors">
+                                <td class="p-6 text-emerald-500 font-bold">200 / 201</td>
+                                <td class="p-6">Success</td>
+                                <td class="p-6 italic">Verify schema consistency & persistent DB state in DBeaver.</td>
+                            </tr>
+                            <tr class="hover:bg-cyan-500/5 transition-colors">
+                                <td class="p-6 text-yellow-500 font-bold">400 / 422</td>
+                                <td class="p-6">Validation</td>
+                                <td class="p-6 italic">Check for meaningful localized error messages for clients.</td>
+                            </tr>
+                            <tr class="hover:bg-cyan-500/5 transition-colors">
+                                <td class="p-6 text-red-500 font-bold">401 / 403</td>
+                                <td class="p-6">Security</td>
+                                <td class="p-6 italic">Validate JWT token expiry and RBAC permission layers.</td>
+                            </tr>
+                            <tr class="hover:bg-cyan-500/5 transition-colors">
+                                <td class="p-6 text-purple-500 font-bold">500 / 503</td>
+                                <td class="p-6">Logic</td>
+                                <td class="p-6 italic">Investigate TraceID in Grafana; verify retry/circuit-breaker.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <section id="scenarios" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">04 / Core Scenarios</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase italic">Persistence Validation</h4>
-                    <p class="text-sm leading-relaxed text-zinc-500">Ensuring that API "Success" signals actually reflect in the database. I utilize <strong>DBeaver</strong> to run direct SQL queries against record states before and after API execution.</p>
+        <section id="risks" class="py-20 border-t border-white/5">
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">04 / Risk Intelligence</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8 rounded-3xl border-l-4 border-l-red-500/50">
+                    <h4 class="text-white font-bold text-lg mb-2">High Impact: Data Integrity</h4>
+                    <p class="text-xs text-slate-500 mb-4 uppercase tracking-widest font-bold">Likelihood: Medium</p>
+                    <p class="text-sm leading-relaxed">Risk of race conditions during concurrent batch processing. Mitigation: Stress testing API endpoints with simultaneous POST requests using Postman collection runner.</p>
                 </div>
-                <div class="space-y-6">
-                    <h4 class="text-white font-bold text-xs uppercase italic">Resilience Testing</h4>
-                    <p class="text-sm leading-relaxed text-zinc-500">How does the UI handle a 503 from a downstream microservice? Testing graceful degradation and circuit-breaker patterns via <strong>Grafana</strong> alerts.</p>
+                <div class="card p-8 rounded-3xl border-l-4 border-l-cyan-500/50">
+                    <h4 class="text-white font-bold text-lg mb-2">Medium Impact: UI Consistency</h4>
+                    <p class="text-xs text-slate-500 mb-4 uppercase tracking-widest font-bold">Likelihood: High</p>
+                    <p class="text-sm leading-relaxed">State management failures across browser sessions. Mitigation: Playwright automated regression for cross-browser visual verification.</p>
                 </div>
             </div>
         </section>
 
         <section id="bugs" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">05 / Bug Reporting</h2>
-            <div class="space-y-12">
-                <div class="mono text-[11px] text-zinc-500 leading-loose border-l border-cyan-500/30 pl-8">
-                    <p class="text-white font-bold"># TITLE: [SVC] - DESC - [ENV]</p>
-                    <p>--</p>
-                    <p>REPRO: 1. Login > 2. POST /v1/order > 3. Intercept</p>
-                    <p>ACTUAL: 500 Internal Server Error</p>
-                    <p>TRACE: tx_id_99218_staging</p>
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">05 / Bug Standards</h2>
+            <div class="card p-8 rounded-3xl bg-slate-950/50 border-cyan-500/10">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>
+                    <span class="mono text-[10px] text-slate-400">jira_bug_blueprint.md</span>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="p-4 border border-white/5 text-center">
-                        <p class="text-[10px] uppercase font-bold text-white">Critical</p>
-                        <p class="text-[9px] text-zinc-600 mt-1">Prod Outage</p>
-                    </div>
-                    <div class="p-4 border border-white/5 text-center">
-                        <p class="text-[10px] uppercase font-bold text-white">High</p>
-                        <p class="text-[9px] text-zinc-600 mt-1">Core Block</p>
-                    </div>
-                    <div class="p-4 border border-white/5 text-center">
-                        <p class="text-[10px] uppercase font-bold text-white">Medium</p>
-                        <p class="text-[9px] text-zinc-600 mt-1">Workaround</p>
-                    </div>
-                    <div class="p-4 border border-white/5 text-center">
-                        <p class="text-[10px] uppercase font-bold text-white">Low</p>
-                        <p class="text-[9px] text-zinc-600 mt-1">UI/Polish</p>
-                    </div>
+                <div class="mono text-[12px] leading-relaxed text-cyan-400/80">
+                    <p class="text-white font-bold mb-2"># [SVC] - SUMMARY - [ENV]</p>
+                    <p class="text-slate-600">---</p>
+                    <p>**Repro Steps:** 1. Login > 2. Navigate to /checkout > 3. Submit empty CVV</p>
+                    <p>**Actual:** 500 Server Error (Silent Crash)</p>
+                    <p>**Expected:** 422 Unprocessable Entity with validation hint</p>
+                    <p>**Trace ID:** <span class="text-emerald-400">v-vlad_qa_88291</span></p>
                 </div>
             </div>
         </section>
 
         <section id="toolkit" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">06 / Senior Toolkit</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="card p-8 rounded-sm">
-                    <h5 class="text-white text-xs font-bold uppercase mb-2">Automation</h5>
-                    <p class="accent-text font-semibold">Playwright</p>
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">06 / Senior Toolkit</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card p-8 rounded-2xl text-center">
+                    <h5 class="text-white font-bold text-[10px] uppercase mb-3">Automation</h5>
+                    <p class="text-cyan-500 font-extrabold text-lg">Playwright</p>
                 </div>
-                <div class="card p-8 rounded-sm">
-                    <h5 class="text-white text-xs font-bold uppercase mb-2">API</h5>
-                    <p class="success-text font-semibold">Postman</p>
+                <div class="card p-8 rounded-2xl text-center">
+                    <h5 class="text-white font-bold text-[10px] uppercase mb-3">API</h5>
+                    <p class="text-emerald-500 font-extrabold text-lg">Postman</p>
                 </div>
-                <div class="card p-8 rounded-sm">
-                    <h5 class="text-white text-xs font-bold uppercase mb-2">Analysis</h5>
-                    <p class="text-purple-500 font-semibold">Grafana</p>
+                <div class="card p-8 rounded-2xl text-center">
+                    <h5 class="text-white font-bold text-[10px] uppercase mb-3">Logs</h5>
+                    <p class="text-purple-500 font-extrabold text-lg">Grafana</p>
                 </div>
-                <div class="card p-8 rounded-sm">
-                    <h5 class="text-white text-xs font-bold uppercase mb-2">Data</h5>
-                    <p class="text-orange-500 font-semibold">DBeaver</p>
+                <div class="card p-8 rounded-2xl text-center">
+                    <h5 class="text-white font-bold text-[10px] uppercase mb-3">DB</h5>
+                    <p class="text-orange-500 font-extrabold text-lg">DBeaver</p>
                 </div>
             </div>
         </section>
 
-        <section id="checklist" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">07 / Readiness</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-xs uppercase font-semibold text-zinc-400">
-                <label class="flex items-center gap-6 p-6 card rounded-sm cursor-pointer hover:text-white transition-all">
-                    <input type="checkbox" class="w-4 h-4"> <span>Smoke tests cleared (Pre-Prod)</span>
+        <section id="checklists" class="py-20 border-t border-white/5">
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">07 / Release Readiness</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <label class="card p-5 rounded-xl flex items-center gap-4 cursor-pointer hover:bg-cyan-500/5 transition-all">
+                    <input type="checkbox"> <span class="text-xs font-semibold text-slate-300">Sanity/Smoke tests passed on Pre-Prod</span>
                 </label>
-                <label class="flex items-center gap-6 p-6 card rounded-sm cursor-pointer hover:text-white transition-all">
-                    <input type="checkbox" class="w-4 h-4"> <span>API Contracts Verified</span>
+                <label class="card p-5 rounded-xl flex items-center gap-4 cursor-pointer hover:bg-cyan-500/5 transition-all">
+                    <input type="checkbox"> <span class="text-xs font-semibold text-slate-300">API Backward compatibility verified</span>
                 </label>
-                <label class="flex items-center gap-6 p-6 card rounded-sm cursor-pointer hover:text-white transition-all">
-                    <input type="checkbox" class="w-4 h-4"> <span>DB Migration Consistency</span>
+                <label class="card p-5 rounded-xl flex items-center gap-4 cursor-pointer hover:bg-cyan-500/5 transition-all">
+                    <input type="checkbox"> <span class="text-xs font-semibold text-slate-300">Database migration scripts validated</span>
                 </label>
-                <label class="flex items-center gap-6 p-6 card rounded-sm cursor-pointer hover:text-white transition-all">
-                    <input type="checkbox" class="w-4 h-4"> <span>Alerts visibility (Grafana)</span>
+                <label class="card p-5 rounded-xl flex items-center gap-4 cursor-pointer hover:bg-cyan-500/5 transition-all">
+                    <input type="checkbox"> <span class="text-xs font-semibold text-slate-300">Rollback plan documented & tested</span>
                 </label>
             </div>
         </section>
 
         <section id="metrics" class="py-20 border-t border-white/5">
-            <h2 class="text-sm font-bold text-zinc-600 uppercase tracking-widest mb-12">08 / KPIs</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-                <div><p class="text-4xl font-bold text-white">0</p><p class="text-[9px] uppercase tracking-widest mt-4">P0 Escapes</p></div>
-                <div><p class="text-4xl font-bold accent-text">92%</p><p class="text-[9px] uppercase tracking-widest mt-4">API Coverage</p></div>
-                <div><p class="text-4xl font-bold text-white">12h</p><p class="text-[9px] uppercase tracking-widest mt-4">MTTD</p></div>
-                <div><p class="text-4xl font-bold success-text">-35%</p><p class="text-[9px] uppercase tracking-widest mt-4">Cycle Time</p></div>
+            <h2 class="text-xs font-black text-cyan-500 uppercase tracking-widest mb-12">08 / KPIs</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div><p class="text-5xl font-black text-white">0</p><p class="text-[9px] uppercase tracking-[0.3em] mt-4 font-bold text-slate-600">P0 Leakage</p></div>
+                <div><p class="text-5xl font-black text-cyan-500">92%</p><p class="text-[9px] uppercase tracking-[0.3em] mt-4 font-bold text-slate-600">Auto Coverage</p></div>
+                <div><p class="text-5xl font-black text-white">2h</p><p class="text-[9px] uppercase tracking-[0.3em] mt-4 font-bold text-slate-600">Avg MTTD</p></div>
+                <div><p class="text-5xl font-black text-emerald-500">40%</p><p class="text-[9px] uppercase tracking-[0.3em] mt-4 font-bold text-slate-600">Faster Cycle</p></div>
             </div>
         </section>
 
-        <footer class="pt-40 pb-20 text-center">
-            <p class="text-[10px] uppercase font-bold tracking-[1em] text-zinc-700">Vladimir Vladimirov QA Engineering</p>
+        <footer class="pt-40 pb-20 border-t border-white/5 text-center">
+            <p class="text-[10px] uppercase font-black tracking-[1.5em] text-slate-800">Vladimir Vladimirov QA Engineering</p>
         </footer>
 
     </main>
 
     <script>
         lucide.createIcons();
-        
-        // Navigation active state logic
+
+        // High-Precision Navigation Active State
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
+        
         window.addEventListener('scroll', () => {
             let current = "";
             sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - 200) {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
                     current = section.getAttribute('id');
                 }
             });
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').includes(current)) {
