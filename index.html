@@ -1188,6 +1188,9 @@
             <a href="#tools-frameworks" class="nav-link">
                 <span>🛠️</span> Tools & Frameworks
             </a>
+            <a href="#ai-tools" class="nav-link">
+                <span>🤖</span> AI Tools for QA
+            </a>
         </nav>
     </aside>
 
@@ -1322,19 +1325,119 @@
                     <h2>Test Strategy & Coverage</h2>
                 </div>
 
-                <p>A solid test strategy balances thoroughness with practicality. We can't test everything, so we test the right things at the right time with the right depth.</p>
+                <p>A solid test strategy balances thoroughness with practicality. We can't test everything, so we test the right things at the right time with the right depth. This section is designed to help junior QAs understand core concepts and prepare for interviews.</p>
 
-                <h3>Testing Pyramid</h3>
-
-                <div class="callout info">
-                    <div class="callout-icon">ℹ️</div>
+                <div class="callout tip">
+                    <div class="callout-icon">🎯</div>
                     <div class="callout-content">
-                        <div class="callout-title">The Testing Pyramid</div>
-                        <p class="callout-text">Build a foundation of fast unit tests (70%), a middle layer of integration tests (20%), and a small cap of E2E tests (10%). This provides fast feedback loops and maintainable test suites.</p>
+                        <div class="callout-title">Interview Prep Note</div>
+                        <p class="callout-text">Interviewers often ask "What types of testing do you know?" or "Explain the difference between X and Y testing." Use this section to build clear, confident answers with real examples.</p>
                     </div>
                 </div>
 
+                <!-- SDLC & STLC Section -->
+                <h3>Understanding SDLC & STLC</h3>
+
+                <div class="grid-2">
+                    <div class="card" style="border-left: 3px solid var(--accent-blue);">
+                        <div class="card-header">
+                            <div class="card-icon blue">🔄</div>
+                            <div><h5>SDLC — Software Development Life Cycle</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">The complete process of planning, creating, testing, and deploying software.</p>
+                        <ol style="font-size: 13px; margin: 0; padding-left: 20px;">
+                            <li><strong>Requirements</strong> — What should the software do?</li>
+                            <li><strong>Design</strong> — How will it be built?</li>
+                            <li><strong>Development</strong> — Writing the code</li>
+                            <li><strong>Testing</strong> — Verifying it works correctly</li>
+                            <li><strong>Deployment</strong> — Releasing to users</li>
+                            <li><strong>Maintenance</strong> — Ongoing support & updates</li>
+                        </ol>
+                    </div>
+
+                    <div class="card" style="border-left: 3px solid var(--accent-green);">
+                        <div class="card-header">
+                            <div class="card-icon green">✅</div>
+                            <div><h5>STLC — Software Testing Life Cycle</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">The QA-specific process within SDLC. Know this for interviews!</p>
+                        <ol style="font-size: 13px; margin: 0; padding-left: 20px;">
+                            <li><strong>Requirement Analysis</strong> — Understand what to test</li>
+                            <li><strong>Test Planning</strong> — Strategy, resources, timeline</li>
+                            <li><strong>Test Case Design</strong> — Write test scenarios</li>
+                            <li><strong>Environment Setup</strong> — Prepare test environment</li>
+                            <li><strong>Test Execution</strong> — Run tests, log defects</li>
+                            <li><strong>Test Closure</strong> — Reports, metrics, lessons learned</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="expandable open">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">💬 Common Interview Question: "Walk me through the STLC"</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p style="font-size: 14px; color: var(--text-secondary);"><strong>Sample Answer:</strong> "The Software Testing Life Cycle has six phases. First, I analyze requirements to understand what needs testing and identify any gaps. Then I create a test plan covering scope, timeline, and resources. Next, I design test cases for different scenarios. Before execution, I ensure the test environment is ready with correct data. During execution, I run tests and log any defects found. Finally, in test closure, I create reports with metrics like pass rate and defect density, and document lessons learned for future sprints."</p>
+                    </div>
+                </div>
+
+                <!-- Testing Levels -->
+                <h3>Testing Levels (Interview Essential)</h3>
+
+                <p>Testing happens at different levels of the application. Interviewers frequently ask about these — know the differences!</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>What It Tests</th>
+                                <th>Who Does It</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Unit Testing</strong></td>
+                                <td>Individual functions/methods in isolation</td>
+                                <td>Developers</td>
+                                <td>Test that <code>calculateTax(100)</code> returns <code>10</code></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Integration Testing</strong></td>
+                                <td>How modules work together</td>
+                                <td>Developers / QA</td>
+                                <td>Test that checkout service correctly calls payment API</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Testing</strong></td>
+                                <td>Complete application as a whole</td>
+                                <td>QA Team</td>
+                                <td>Test entire user registration flow end-to-end</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Acceptance Testing</strong></td>
+                                <td>Business requirements met</td>
+                                <td>QA / Product / Users</td>
+                                <td>Verify feature matches what stakeholder requested</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Remember: "Unit → Integration → System → Acceptance"</div>
+                        <p class="callout-text">Think of it like building a car: test individual parts (unit), test parts working together (integration), test the whole car (system), then let the customer test drive (acceptance).</p>
+                    </div>
+                </div>
+
+                <!-- Testing Types -->
                 <h3>Testing Types</h3>
+
+                <p>These are the different approaches to testing. You'll use most of these in your daily work.</p>
 
                 <div class="grid-2">
                     <div class="card">
@@ -1421,6 +1524,401 @@
                     </div>
                 </div>
 
+                <!-- Key Comparisons for Interviews -->
+                <h3>Key Comparisons (Interview Favorites)</h3>
+
+                <p>Interviewers love asking "What's the difference between X and Y?" Here are the most common ones:</p>
+
+                <div class="expandable open">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔥 Smoke Testing vs Sanity Testing</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="grid-2">
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-blue); margin-bottom: 8px;">Smoke Testing</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>When:</strong> After a new build/deployment</li>
+                                    <li><strong>Scope:</strong> Broad — covers all major areas</li>
+                                    <li><strong>Purpose:</strong> "Does the build work at all?"</li>
+                                    <li><strong>Depth:</strong> Shallow — critical paths only</li>
+                                    <li><strong>Analogy:</strong> Turning on a device to see if it powers up</li>
+                                </ul>
+                            </div>
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-green); margin-bottom: 8px;">Sanity Testing</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>When:</strong> After a bug fix or minor change</li>
+                                    <li><strong>Scope:</strong> Narrow — specific changed area</li>
+                                    <li><strong>Purpose:</strong> "Does this fix actually work?"</li>
+                                    <li><strong>Depth:</strong> Deeper in the specific area</li>
+                                    <li><strong>Analogy:</strong> Checking if a repaired part works</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><strong>Memory trick:</strong> Smoke = "Is there smoke? Something's broken!" (overall health). Sanity = "Is this change sane/logical?" (specific check).</p>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔥 Retesting vs Regression Testing</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="grid-2">
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-orange); margin-bottom: 8px;">Retesting</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>Purpose:</strong> Verify a specific bug is fixed</li>
+                                    <li><strong>Scope:</strong> Only the defect that was reported</li>
+                                    <li><strong>Uses same test case:</strong> Yes — exact same steps</li>
+                                    <li><strong>Example:</strong> Bug #123 said login fails → retest login</li>
+                                </ul>
+                            </div>
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-purple); margin-bottom: 8px;">Regression Testing</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>Purpose:</strong> Ensure fix didn't break other things</li>
+                                    <li><strong>Scope:</strong> Related and surrounding features</li>
+                                    <li><strong>Uses same test case:</strong> No — runs broader suite</li>
+                                    <li><strong>Example:</strong> Login fixed → test profile, settings, logout too</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><strong>Memory trick:</strong> Retesting = "Re-do the exact test". Regression = "Regress to check nothing went backwards".</p>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔥 Verification vs Validation</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="grid-2">
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-blue); margin-bottom: 8px;">Verification</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>Question:</strong> "Are we building the product RIGHT?"</li>
+                                    <li><strong>Focus:</strong> Process and documentation</li>
+                                    <li><strong>Methods:</strong> Reviews, walkthroughs, inspections</li>
+                                    <li><strong>Static:</strong> No code execution required</li>
+                                    <li><strong>Example:</strong> Review requirements doc for completeness</li>
+                                </ul>
+                            </div>
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-green); margin-bottom: 8px;">Validation</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>Question:</strong> "Are we building the RIGHT product?"</li>
+                                    <li><strong>Focus:</strong> Actual product behavior</li>
+                                    <li><strong>Methods:</strong> Testing, execution, user feedback</li>
+                                    <li><strong>Dynamic:</strong> Requires running the software</li>
+                                    <li><strong>Example:</strong> Test if feature meets user needs</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><strong>Memory trick:</strong> Verification = "Did we follow the recipe correctly?" Validation = "Does the cake taste good?"</p>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔥 Black Box vs White Box vs Gray Box Testing</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>Black Box</th>
+                                        <th>White Box</th>
+                                        <th>Gray Box</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Code Knowledge</strong></td>
+                                        <td>None required</td>
+                                        <td>Full access</td>
+                                        <td>Partial knowledge</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Focus</strong></td>
+                                        <td>Inputs & outputs</td>
+                                        <td>Internal logic & paths</td>
+                                        <td>Both behavior & structure</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Done By</strong></td>
+                                        <td>QA Testers</td>
+                                        <td>Developers</td>
+                                        <td>QA with some code access</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Example</strong></td>
+                                        <td>Testing login UI</td>
+                                        <td>Unit testing functions</td>
+                                        <td>API testing with DB checks</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Analogy</strong></td>
+                                        <td>Testing a vending machine from outside</td>
+                                        <td>Testing with the machine open</td>
+                                        <td>Testing with partial diagrams</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><strong>Interview tip:</strong> As a QA, you primarily do black box testing. But knowing how to check databases (DBeaver) and APIs (Postman) makes you a gray box tester — which is valuable!</p>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔥 Severity vs Priority</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="grid-2">
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-red); margin-bottom: 8px;">Severity</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>Definition:</strong> Technical impact of the bug</li>
+                                    <li><strong>Set by:</strong> QA (based on technical assessment)</li>
+                                    <li><strong>Question:</strong> "How bad is this bug technically?"</li>
+                                    <li><strong>Examples:</strong> Crash = Critical, Typo = Low</li>
+                                </ul>
+                            </div>
+                            <div style="padding: 16px; background: var(--bg-card); border-radius: var(--radius-sm);">
+                                <h5 style="color: var(--accent-orange); margin-bottom: 8px;">Priority</h5>
+                                <ul style="font-size: 13px; margin: 0;">
+                                    <li><strong>Definition:</strong> Business urgency to fix</li>
+                                    <li><strong>Set by:</strong> Product/Business (based on impact)</li>
+                                    <li><strong>Question:</strong> "How urgently must we fix this?"</li>
+                                    <li><strong>Examples:</strong> Homepage bug = High, Admin-only = Low</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="callout warning" style="margin-top: 16px;">
+                            <div class="callout-icon">⚠️</div>
+                            <div class="callout-content">
+                                <div class="callout-title">Classic Interview Example</div>
+                                <p class="callout-text"><strong>High Severity, Low Priority:</strong> App crashes when user uploads a 10GB file (severe crash, but rare scenario)<br><strong>Low Severity, High Priority:</strong> Company logo is wrong on homepage (just a visual bug, but visible to all users and damages brand)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔥 Test Case vs Test Scenario vs Test Plan vs Test Suite</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Term</th>
+                                        <th>Definition</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Test Scenario</strong></td>
+                                        <td>High-level description of WHAT to test</td>
+                                        <td>"Verify user can log in"</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Test Case</strong></td>
+                                        <td>Detailed steps of HOW to test</td>
+                                        <td>"1. Go to login page, 2. Enter email..."</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Test Suite</strong></td>
+                                        <td>Collection of related test cases</td>
+                                        <td>"Login Module Test Suite" (contains all login tests)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Test Plan</strong></td>
+                                        <td>Document describing overall test strategy</td>
+                                        <td>Scope, resources, schedule, risk for entire project</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;"><strong>Hierarchy:</strong> Test Plan → Test Suites → Test Scenarios → Test Cases</p>
+                    </div>
+                </div>
+
+                <!-- Test Design Techniques -->
+                <h3>Test Design Techniques (Interview Must-Know)</h3>
+
+                <p>These techniques help you create effective test cases. Interviewers often ask you to apply these!</p>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon blue">📊</div>
+                            <div><h5>Equivalence Partitioning</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Divide inputs into groups (partitions) that should behave the same way. Test one value from each partition.</p>
+                        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-sm); font-size: 13px;">
+                            <strong>Example:</strong> Age field accepts 18-65<br>
+                            • Invalid: 0-17 (test: 10)<br>
+                            • Valid: 18-65 (test: 30)<br>
+                            • Invalid: 66+ (test: 70)
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon green">📐</div>
+                            <div><h5>Boundary Value Analysis</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Bugs love boundaries! Test at the edges of valid ranges, not just the middle.</p>
+                        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-sm); font-size: 13px;">
+                            <strong>Example:</strong> Age field accepts 18-65<br>
+                            Test: 17, 18, 19, 64, 65, 66<br>
+                            (just below, at, just above each boundary)
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon orange">📋</div>
+                            <div><h5>Decision Table Testing</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">For complex business rules with multiple conditions. Create a table of all condition combinations.</p>
+                        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-sm); font-size: 13px;">
+                            <strong>Example:</strong> Loan approval<br>
+                            • Good credit + High income = Approve<br>
+                            • Good credit + Low income = Review<br>
+                            • Bad credit + High income = Review<br>
+                            • Bad credit + Low income = Reject
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon purple">🔀</div>
+                            <div><h5>State Transition Testing</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">For features with different states. Test valid and invalid transitions between states.</p>
+                        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-sm); font-size: 13px;">
+                            <strong>Example:</strong> Order status<br>
+                            Draft → Submitted → Approved → Shipped<br>
+                            Test: Can order go from Draft to Shipped directly? (Should fail)
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon teal">🎲</div>
+                            <div><h5>Error Guessing</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Use experience and intuition to guess where bugs might hide. Based on common error patterns.</p>
+                        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-sm); font-size: 13px;">
+                            <strong>Common guesses:</strong><br>
+                            • Null/empty inputs<br>
+                            • Special characters (!@#$%)<br>
+                            • Very long strings<br>
+                            • Zero and negative numbers
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon pink">🔗</div>
+                            <div><h5>Use Case Testing</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Test complete user scenarios from start to finish. Covers real-world user journeys.</p>
+                        <div style="background: var(--bg-elevated); padding: 12px; border-radius: var(--radius-sm); font-size: 13px;">
+                            <strong>Example:</strong> E-commerce purchase<br>
+                            Browse → Add to cart → Apply coupon → Checkout → Pay → Receive confirmation
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout success">
+                    <div class="callout-icon">✓</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Interview Power Combo</div>
+                        <p class="callout-text">When asked "How would you test a login form?", combine techniques: <strong>Equivalence Partitioning</strong> (valid/invalid emails), <strong>Boundary Value</strong> (password length limits), <strong>Error Guessing</strong> (SQL injection, empty fields), and <strong>Use Case</strong> (complete login flow). This shows depth!</p>
+                    </div>
+                </div>
+
+                <!-- Defect Life Cycle -->
+                <h3>Defect/Bug Life Cycle</h3>
+
+                <p>Understanding how bugs move through the system is essential. You'll be asked about this!</p>
+
+                <div class="code-block" style="text-align: center; font-size: 14px;">
+<strong style="color: var(--accent-blue);">NEW</strong> → <strong style="color: var(--accent-orange);">ASSIGNED</strong> → <strong style="color: var(--accent-purple);">IN PROGRESS</strong> → <strong style="color: var(--accent-teal);">FIXED</strong> → <strong style="color: var(--accent-blue);">READY FOR QA</strong> → <strong style="color: var(--accent-green);">VERIFIED</strong> → <strong style="color: var(--text-muted);">CLOSED</strong>
+                                                    ↓
+                                        <strong style="color: var(--accent-red);">REOPENED</strong> (if fix didn't work)
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Meaning</th>
+                                <th>Who's Responsible</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="tag blue">New</span></td>
+                                <td>Bug just reported, awaiting triage</td>
+                                <td>QA creates → Lead reviews</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag orange">Assigned</span></td>
+                                <td>Bug assigned to a developer</td>
+                                <td>Developer owns it</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag purple">In Progress</span></td>
+                                <td>Developer actively working on fix</td>
+                                <td>Developer</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag teal">Fixed</span></td>
+                                <td>Developer believes it's fixed</td>
+                                <td>Awaiting deployment</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag blue">Ready for QA</span></td>
+                                <td>Deployed to test environment</td>
+                                <td>QA to verify</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag green">Verified</span></td>
+                                <td>QA confirmed the fix works</td>
+                                <td>QA approves</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag red">Reopened</span></td>
+                                <td>Fix didn't work, back to developer</td>
+                                <td>QA reopens → Developer</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tag" style="background: var(--bg-elevated); color: var(--text-muted);">Closed</span></td>
+                                <td>Bug is resolved and verified</td>
+                                <td>Done!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Coverage Strategy -->
                 <h3>Coverage Strategy</h3>
 
                 <div class="table-wrapper">
@@ -1467,6 +1965,75 @@
                     <div class="callout-content">
                         <div class="callout-title">Coverage Trap</div>
                         <p class="callout-text">100% code coverage doesn't mean 100% quality. Focus on meaningful coverage — testing the right scenarios, not just hitting lines of code. A well-designed 70% coverage can be more effective than poorly-designed 100%.</p>
+                    </div>
+                </div>
+
+                <!-- Quick Reference Interview Questions -->
+                <h3>Quick Reference: Common Interview Questions</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Question</th>
+                                <th>Key Points for Your Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>"What is a Test Case?"</strong></td>
+                                <td>A set of conditions and steps to verify a specific functionality works as expected. Includes: ID, title, preconditions, steps, expected result, actual result.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"When do you stop testing?"</strong></td>
+                                <td>When: test coverage targets met, all critical bugs fixed, deadline reached, risk is acceptable, or budget exhausted. Never "when all bugs are found" — that's impossible!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"What makes a good bug report?"</strong></td>
+                                <td>Clear title, reproducible steps, expected vs actual results, environment details, screenshots/logs. Goal: anyone can reproduce without asking questions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"How do you prioritize testing?"</strong></td>
+                                <td>Risk-based approach: focus on high-impact features, frequently used paths, recently changed code, and historically buggy areas. Business-critical flows first.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"What is regression testing?"</strong></td>
+                                <td>Re-running tests to ensure new changes haven't broken existing functionality. Done after bug fixes, new features, or any code changes.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"Explain positive and negative testing"</strong></td>
+                                <td>Positive: valid inputs, expected behavior (happy path). Negative: invalid inputs, error handling (edge cases). Both are essential!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"What is UAT?"</strong></td>
+                                <td>User Acceptance Testing — final testing by actual users/stakeholders to verify the system meets business requirements before go-live.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"What is a defect/bug?"</strong></td>
+                                <td>A deviation from expected behavior. When actual result doesn't match expected result based on requirements.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"What's the difference between QA and QC?"</strong></td>
+                                <td>QA (Assurance) = process-oriented, prevention focused. QC (Control) = product-oriented, detection focused. QA prevents defects; QC finds them.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"How do you test without requirements?"</strong></td>
+                                <td>Exploratory testing, compare with similar features, check industry standards, test common user flows, ask stakeholders questions, document assumptions.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout success">
+                    <div class="callout-icon">🎯</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Interview Success Tips</div>
+                        <p class="callout-text">
+                            <strong>1. Use real examples:</strong> "In my last project, I used boundary value analysis when testing the age field..."<br>
+                            <strong>2. Show your thinking:</strong> Explain WHY you'd choose a technique, not just WHAT it is<br>
+                            <strong>3. Admit what you don't know:</strong> "I haven't used that tool, but I'd approach learning it by..."<br>
+                            <strong>4. Ask clarifying questions:</strong> Shows analytical thinking — "What type of application is this for?"
+                        </p>
                     </div>
                 </div>
 
@@ -1832,6 +2399,350 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Authentication Types -->
+                <h3>API Authentication Types</h3>
+
+                <p>Understanding authentication is critical for API testing. Know these common methods:</p>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon blue">🔑</div>
+                            <div><h5>API Key</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Simple key passed in header or query parameter.</p>
+                        <div class="code-block" style="font-size: 12px; padding: 12px;">X-API-Key: your_api_key_here
+<span style="color: var(--text-muted);">or</span>
+?api_key=your_api_key_here</div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><strong>Test:</strong> Invalid key, expired key, missing key, key with wrong permissions</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon green">🎫</div>
+                            <div><h5>Bearer Token (JWT)</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Token-based auth, common in modern APIs.</p>
+                        <div class="code-block" style="font-size: 12px; padding: 12px;">Authorization: Bearer eyJhbGciOiJIUzI1...</div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><strong>Test:</strong> Expired token, malformed token, token for different user, missing Bearer prefix</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon orange">👤</div>
+                            <div><h5>Basic Auth</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Username:password encoded in Base64.</p>
+                        <div class="code-block" style="font-size: 12px; padding: 12px;">Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><strong>Test:</strong> Wrong credentials, empty password, special characters, case sensitivity</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon purple">🔐</div>
+                            <div><h5>OAuth 2.0</h5></div>
+                        </div>
+                        <p style="margin-bottom: 12px;">Industry standard for authorization delegation.</p>
+                        <div class="code-block" style="font-size: 12px; padding: 12px;">Authorization: Bearer {access_token}
+<span style="color: var(--text-muted);">+ Refresh token flow</span></div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;"><strong>Test:</strong> Token refresh, scope validation, revoked tokens, PKCE flow</p>
+                    </div>
+                </div>
+
+                <!-- Common Headers Reference -->
+                <h3>Common HTTP Headers Reference</h3>
+
+                <div class="grid-2">
+                    <div>
+                        <h4>Request Headers</h4>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Header</th>
+                                        <th>Purpose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>Content-Type</code></td>
+                                        <td>Format of request body (application/json)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Accept</code></td>
+                                        <td>Expected response format</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Authorization</code></td>
+                                        <td>Auth credentials/token</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>X-Request-ID</code></td>
+                                        <td>Trace ID for debugging</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>User-Agent</code></td>
+                                        <td>Client identification</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Cache-Control</code></td>
+                                        <td>Caching directives</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Response Headers to Verify</h4>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Header</th>
+                                        <th>What to Check</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>Content-Type</code></td>
+                                        <td>Matches expected format</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>X-RateLimit-*</code></td>
+                                        <td>Rate limit info present</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>X-Request-ID</code></td>
+                                        <td>Returned for tracing</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Cache-Control</code></td>
+                                        <td>Correct caching policy</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>CORS headers</code></td>
+                                        <td>Cross-origin allowed</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>Security headers</code></td>
+                                        <td>X-Frame-Options, CSP, etc.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Response Validation -->
+                <h3>API Response Validation Checklist</h3>
+
+                <p>For every API response, verify these elements:</p>
+
+                <div class="grid-3">
+                    <div class="card">
+                        <h5 style="margin-bottom: 12px;">📋 Status Code</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Correct code for operation</li>
+                            <li>Consistent across similar endpoints</li>
+                            <li>Proper error codes (not always 500)</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h5 style="margin-bottom: 12px;">📊 Response Body</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Schema matches documentation</li>
+                            <li>Required fields present</li>
+                            <li>Data types correct</li>
+                            <li>No sensitive data leaked</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h5 style="margin-bottom: 12px;">⏱️ Performance</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Response time acceptable</li>
+                            <li>Payload size reasonable</li>
+                            <li>No unnecessary data</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h5 style="margin-bottom: 12px;">🔗 Headers</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Content-Type correct</li>
+                            <li>Security headers present</li>
+                            <li>CORS configured properly</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h5 style="margin-bottom: 12px;">❌ Error Responses</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Clear error messages</li>
+                            <li>Error code for programmatic handling</li>
+                            <li>No stack traces exposed</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h5 style="margin-bottom: 12px;">🔄 Consistency</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Same structure across endpoints</li>
+                            <li>Consistent naming conventions</li>
+                            <li>Predictable pagination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Common API Testing Mistakes -->
+                <h3>Common API Testing Mistakes</h3>
+
+                <div class="callout danger">
+                    <div class="callout-icon">🚫</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Avoid These Pitfalls</div>
+                        <p class="callout-text">
+                            <strong>1. Only testing happy paths</strong> — Always include negative tests and edge cases<br><br>
+                            <strong>2. Ignoring response headers</strong> — Headers contain important info (rate limits, security)<br><br>
+                            <strong>3. Hardcoding test data</strong> — Use variables and environments for flexibility<br><br>
+                            <strong>4. Not validating schema</strong> — Check that response structure matches API spec<br><br>
+                            <strong>5. Skipping auth boundary tests</strong> — Verify users can't access others' data<br><br>
+                            <strong>6. Testing only in isolation</strong> — Test API chains and dependent workflows<br><br>
+                            <strong>7. Ignoring error messages</strong> — Error responses should be helpful, not generic
+                        </p>
+                    </div>
+                </div>
+
+                <!-- API Testing Workflow -->
+                <h3>API Testing Workflow</h3>
+
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Understand the API</div>
+                        <div class="step-description">Review documentation, Swagger/OpenAPI spec. Understand endpoints, parameters, auth requirements, and expected responses.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Set Up Environment</div>
+                        <div class="step-description">Configure Postman environment with base URL, auth tokens, and common variables. Set up for dev/staging/prod.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Test Positive Scenarios</div>
+                        <div class="step-description">Verify happy paths work: valid requests return correct data with proper status codes.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Test Negative Scenarios</div>
+                        <div class="step-description">Invalid inputs, missing fields, wrong types, unauthorized access. Verify proper error handling.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Test Edge Cases & Boundaries</div>
+                        <div class="step-description">Empty strings, max lengths, special characters, null values, boundary numbers.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <div class="step-title">Test Security</div>
+                        <div class="step-description">Auth bypass attempts, injection attacks, IDOR, rate limiting, sensitive data exposure.</div>
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <div class="step-title">Verify Data Integrity</div>
+                        <div class="step-description">Check database after create/update/delete operations. Verify data consistency.</div>
+                    </div>
+                </div>
+
+                <!-- Postman Tips -->
+                <h3>Postman Power Tips</h3>
+
+                <div class="grid-2">
+                    <div class="expandable open">
+                        <div class="expandable-header" onclick="toggleExpand(this)">
+                            <span class="expandable-title">🔧 Pre-request Script Examples</span>
+                            <span class="expandable-arrow">▼</span>
+                        </div>
+                        <div class="expandable-content">
+                            <div class="code-block" style="font-size: 12px;">
+<span style="color: var(--text-muted);">// Generate random email for testing</span>
+const randomEmail = `test_${Date.now()}@example.com`;
+pm.environment.set("testEmail", randomEmail);
+
+<span style="color: var(--text-muted);">// Set timestamp</span>
+pm.environment.set("timestamp", new Date().toISOString());
+
+<span style="color: var(--text-muted);">// Generate UUID</span>
+pm.environment.set("uuid", pm.variables.replaceIn('{{$guid}}'));
+
+<span style="color: var(--text-muted);">// Get auth token and set for next requests</span>
+const loginResponse = pm.response.json();
+pm.environment.set("authToken", loginResponse.token);</div>
+                        </div>
+                    </div>
+
+                    <div class="expandable">
+                        <div class="expandable-header" onclick="toggleExpand(this)">
+                            <span class="expandable-title">✅ Test Script Examples</span>
+                            <span class="expandable-arrow">▼</span>
+                        </div>
+                        <div class="expandable-content">
+                            <div class="code-block" style="font-size: 12px;">
+<span style="color: var(--text-muted);">// Check status code</span>
+pm.test("Status is 200", () => {
+    pm.response.to.have.status(200);
+});
+
+<span style="color: var(--text-muted);">// Check response time</span>
+pm.test("Response time < 500ms", () => {
+    pm.expect(pm.response.responseTime).to.be.below(500);
+});
+
+<span style="color: var(--text-muted);">// Validate JSON schema</span>
+pm.test("Response has required fields", () => {
+    const json = pm.response.json();
+    pm.expect(json).to.have.property('id');
+    pm.expect(json).to.have.property('email');
+    pm.expect(json.email).to.be.a('string');
+});
+
+<span style="color: var(--text-muted);">// Check array length</span>
+pm.test("Returns at least 1 item", () => {
+    const json = pm.response.json();
+    pm.expect(json.data).to.be.an('array');
+    pm.expect(json.data.length).to.be.greaterThan(0);
+});</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout success">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Pro Tip: Chain Requests</div>
+                        <p class="callout-text">Use Postman's Collection Runner to chain requests: Create user → Get user ID from response → Use ID to update user → Delete user. This tests the full CRUD lifecycle automatically.</p>
+                    </div>
                 </div>
             </section>
 
@@ -2972,21 +3883,573 @@
                         </tbody>
                     </table>
                 </div>
+            </section>
 
-                <h3>Recommended Learning Path</h3>
+            <!-- ============================================== -->
+            <!-- SECTION 8: AI TOOLS FOR QA -->
+            <!-- ============================================== -->
+            <section class="section" id="ai-tools">
+                <div class="section-header">
+                    <div class="section-number">08</div>
+                    <h2>AI Tools for QA</h2>
+                </div>
 
-                <div class="grid-3">
-                    <div class="metric-card">
-                        <div class="metric-value" style="font-size: 24px;">Week 1-2</div>
-                        <div class="metric-label">Jira, Postman, DevTools basics</div>
+                <p>AI assistants like Claude can significantly boost QA productivity when used effectively. This section covers practical prompts, use cases, and best practices for integrating AI into your QA workflow.</p>
+
+                <div class="callout info">
+                    <div class="callout-icon">🤖</div>
+                    <div class="callout-content">
+                        <div class="callout-title">AI is a Tool, Not a Replacement</div>
+                        <p class="callout-text">AI excels at repetitive tasks, generating ideas, and processing information quickly. But it doesn't replace QA judgment, domain knowledge, or critical thinking. Use AI to augment your skills, not replace your brain.</p>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-value" style="font-size: 24px;">Week 3-4</div>
-                        <div class="metric-label">Grafana, DBeaver, API testing depth</div>
+                </div>
+
+                <h3>High-Value QA Use Cases for AI</h3>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon blue">📝</div>
+                            <div><h5>Test Case Generation</h5></div>
+                        </div>
+                        <p>Generate comprehensive test scenarios from requirements, user stories, or feature descriptions. AI can quickly identify edge cases you might miss.</p>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-value" style="font-size: 24px;">Month 2+</div>
-                        <div class="metric-label">Automation frameworks, CI/CD</div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon green">🐛</div>
+                            <div><h5>Bug Report Enhancement</h5></div>
+                        </div>
+                        <p>Improve bug report clarity, suggest missing details, and help structure reproduction steps for better developer understanding.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon orange">🔌</div>
+                            <div><h5>API Test Script Writing</h5></div>
+                        </div>
+                        <p>Generate Postman collections, test scripts, and assertions. Convert API documentation into executable test cases.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon purple">📊</div>
+                            <div><h5>Test Data Generation</h5></div>
+                        </div>
+                        <p>Create realistic test data sets, boundary values, and edge case inputs. Generate data that covers various scenarios.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon teal">📚</div>
+                            <div><h5>Documentation Writing</h5></div>
+                        </div>
+                        <p>Draft test plans, create user guides, write release notes, and document test strategies faster.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon pink">🔍</div>
+                            <div><h5>Code Review Assistance</h5></div>
+                        </div>
+                        <p>Analyze code changes for potential bugs, suggest test scenarios based on modified code, identify risky changes.</p>
+                    </div>
+                </div>
+
+                <h3>Effective Prompting for QA Tasks</h3>
+
+                <p>The quality of AI output depends heavily on your prompt. Here's how to write prompts that get useful results:</p>
+
+                <div class="pillar">
+                    <h4>1. Be Specific About Context</h4>
+                    <p>Include relevant details: what type of application, what feature, what's already tested, what technology stack. More context = better output.</p>
+                </div>
+
+                <div class="pillar">
+                    <h4>2. Define the Output Format</h4>
+                    <p>Tell AI exactly what format you need: table, numbered list, Gherkin syntax, JSON, etc. This saves reformatting time.</p>
+                </div>
+
+                <div class="pillar">
+                    <h4>3. Specify the Testing Perspective</h4>
+                    <p>Mention what types of testing you need: functional, security, performance, accessibility. Ask for specific techniques like boundary analysis.</p>
+                </div>
+
+                <div class="pillar">
+                    <h4>4. Request Prioritization</h4>
+                    <p>Ask AI to prioritize test cases by risk, importance, or execution order. This helps when time is limited.</p>
+                </div>
+
+                <h3>Ready-to-Use QA Prompts</h3>
+
+                <p>Copy and customize these prompts for your daily QA work:</p>
+
+                <!-- Test Case Generation Prompts -->
+                <div class="expandable open">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">📝 Test Case Generation Prompts</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-blue);">Comprehensive Test Cases from User Story</strong>
+
+You are a senior QA engineer. Generate test cases for this user story:
+
+[PASTE USER STORY HERE]
+
+Requirements:
+- Include positive tests (happy path)
+- Include negative tests (invalid inputs, error handling)
+- Include edge cases and boundary conditions
+- Include security considerations if applicable
+- Format as a table with columns: Test ID, Scenario, Steps, Expected Result, Priority (High/Medium/Low)
+- Prioritize by risk and user impact</div>
+
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-blue);">Edge Case Discovery</strong>
+
+Analyze this feature and identify edge cases that might be missed during testing:
+
+Feature: [DESCRIBE FEATURE]
+Input fields: [LIST FIELDS AND THEIR TYPES]
+Business rules: [LIST ANY RULES]
+
+For each edge case:
+1. Describe the scenario
+2. Explain why it's risky
+3. Suggest how to test it
+4. Rate likelihood of occurrence (High/Medium/Low)</div>
+
+                        <div class="code-block">
+<strong style="color: var(--accent-blue);">Gherkin/BDD Test Scenarios</strong>
+
+Convert this requirement into Gherkin format (Given-When-Then):
+
+Requirement: [PASTE REQUIREMENT]
+
+Generate scenarios for:
+- Main success path
+- Alternative paths
+- Error scenarios
+- Edge cases
+
+Use proper Gherkin syntax with Feature, Scenario, Given, When, Then, And.</div>
+                    </div>
+                </div>
+
+                <!-- API Testing Prompts -->
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🔌 API Testing Prompts</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-orange);">Generate API Test Cases</strong>
+
+Create comprehensive API test cases for this endpoint:
+
+Endpoint: [METHOD] [URL]
+Request body: [PASTE JSON SCHEMA OR EXAMPLE]
+Response: [PASTE EXPECTED RESPONSE]
+Authentication: [AUTH TYPE]
+
+Generate test cases covering:
+1. Valid requests (positive testing)
+2. Invalid requests (missing fields, wrong types, invalid values)
+3. Authentication/authorization scenarios
+4. Boundary values for numeric/string fields
+5. Security tests (injection, XSS payloads)
+6. Performance considerations
+
+Format as a table with: Test Name, Request, Expected Status Code, Expected Response, Category</div>
+
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-orange);">Postman Collection Generator</strong>
+
+Generate a Postman collection JSON for testing this API:
+
+Base URL: [URL]
+Endpoints:
+[LIST ENDPOINTS WITH METHODS]
+
+Include:
+- Pre-request scripts for auth token
+- Test assertions for status codes
+- Response validation tests
+- Environment variables for different environments
+- Folder organization by feature</div>
+
+                        <div class="code-block">
+<strong style="color: var(--accent-orange);">API Security Test Cases</strong>
+
+Generate security-focused test cases for this API endpoint:
+
+Endpoint: [DESCRIBE ENDPOINT]
+Authentication: [AUTH METHOD]
+User roles: [LIST ROLES]
+
+Cover these security aspects:
+1. Authentication bypass attempts
+2. Authorization/privilege escalation
+3. Input validation (SQL injection, XSS, command injection)
+4. Rate limiting and DOS protection
+5. Sensitive data exposure
+6. IDOR (Insecure Direct Object Reference)
+
+For each test, explain the attack vector and how to verify the fix.</div>
+                    </div>
+                </div>
+
+                <!-- Bug Report Prompts -->
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🐛 Bug Report & Analysis Prompts</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-red);">Improve Bug Report</strong>
+
+Review and improve this bug report for clarity and completeness:
+
+[PASTE YOUR BUG REPORT]
+
+Enhance it by:
+1. Making the title more specific and searchable
+2. Clarifying reproduction steps (numbered, specific)
+3. Clearly separating expected vs actual results
+4. Suggesting what additional information might help developers
+5. Recommending appropriate severity and priority
+6. Identifying potential root cause areas to investigate</div>
+
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-red);">Root Cause Analysis</strong>
+
+Help me analyze this bug:
+
+Bug description: [DESCRIBE THE BUG]
+When it occurs: [CONDITIONS]
+Error messages: [ANY ERRORS]
+Recent changes: [WHAT CHANGED RECENTLY]
+
+Suggest:
+1. Possible root causes (ranked by likelihood)
+2. Areas of code/system to investigate
+3. Additional tests to isolate the issue
+4. Questions to ask the developer
+5. Similar bugs to check in history</div>
+
+                        <div class="code-block">
+<strong style="color: var(--accent-red);">Regression Impact Analysis</strong>
+
+A bug was found in: [COMPONENT/FEATURE]
+The fix involves: [DESCRIBE THE FIX]
+
+Identify:
+1. Features that might be affected by this change
+2. Regression test cases to run
+3. Integration points to verify
+4. Data that might be impacted
+5. User workflows to re-test</div>
+                    </div>
+                </div>
+
+                <!-- Test Data Prompts -->
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">📊 Test Data Generation Prompts</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-purple);">Generate Realistic Test Data</strong>
+
+Generate test data for a [TYPE OF APPLICATION] with these fields:
+
+[LIST FIELDS WITH DATA TYPES AND CONSTRAINTS]
+
+Generate 20 records including:
+- 10 valid records with realistic values
+- 5 edge case records (boundaries, special characters)
+- 5 invalid records for negative testing
+
+Format as CSV/JSON (specify which you need).</div>
+
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-purple);">Boundary Value Test Data</strong>
+
+For this input field, generate boundary value test data:
+
+Field: [FIELD NAME]
+Type: [STRING/NUMBER/DATE]
+Constraints: [MIN, MAX, FORMAT, ETC.]
+
+Generate test values for:
+- Just below minimum
+- At minimum
+- Just above minimum  
+- Normal valid value
+- Just below maximum
+- At maximum
+- Just above maximum
+- Invalid formats</div>
+
+                        <div class="code-block">
+<strong style="color: var(--accent-purple);">SQL Test Data Script</strong>
+
+Generate SQL INSERT statements to populate test data for:
+
+Table structure:
+[PASTE TABLE SCHEMA]
+
+Requirements:
+- Include foreign key relationships
+- Create data for testing [SPECIFIC SCENARIOS]
+- Add comments explaining each test case
+- Include cleanup DELETE statements</div>
+                    </div>
+                </div>
+
+                <!-- Documentation Prompts -->
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">📚 Documentation & Reporting Prompts</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-teal);">Test Summary Report</strong>
+
+Create a test summary report from these results:
+
+Test cycle: [SPRINT/RELEASE]
+Total tests: [NUMBER]
+Passed: [NUMBER]
+Failed: [NUMBER]
+Blocked: [NUMBER]
+Bugs found: [LIST KEY BUGS]
+
+Include:
+1. Executive summary (2-3 sentences)
+2. Test coverage by feature area
+3. Critical issues and risks
+4. Recommendations for release readiness
+5. Metrics comparison with previous cycle</div>
+
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-teal);">Release Notes Draft</strong>
+
+Generate release notes from these Jira tickets:
+
+[LIST TICKET IDS AND TITLES]
+
+Format with sections:
+- New Features
+- Improvements  
+- Bug Fixes
+- Known Issues
+
+Write in user-friendly language, not technical jargon.
+Include ticket references for traceability.</div>
+
+                        <div class="code-block">
+<strong style="color: var(--accent-teal);">Test Plan Outline</strong>
+
+Create a test plan outline for:
+
+Project: [PROJECT NAME]
+Scope: [WHAT'S BEING TESTED]
+Timeline: [DATES]
+Team: [RESOURCES]
+
+Include sections:
+1. Objectives and scope
+2. Test strategy and approach
+3. Test environment requirements
+4. Entry and exit criteria
+5. Test deliverables
+6. Risk assessment
+7. Schedule and milestones</div>
+                    </div>
+                </div>
+
+                <!-- Automation Prompts -->
+                <div class="expandable">
+                    <div class="expandable-header" onclick="toggleExpand(this)">
+                        <span class="expandable-title">🤖 Test Automation Prompts</span>
+                        <span class="expandable-arrow">▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-green);">Playwright/Cypress Test Script</strong>
+
+Generate a [Playwright/Cypress] test script for this scenario:
+
+Scenario: [DESCRIBE THE TEST FLOW]
+URL: [APPLICATION URL]
+Test data: [ANY REQUIRED DATA]
+
+Requirements:
+- Use page object model pattern
+- Include proper waits and assertions
+- Add meaningful test descriptions
+- Handle potential failures gracefully
+- Include setup and teardown</div>
+
+                        <div class="code-block" style="margin-bottom: 16px;">
+<strong style="color: var(--accent-green);">Convert Manual Test to Automated</strong>
+
+Convert this manual test case to an automated script:
+
+[PASTE MANUAL TEST CASE]
+
+Target framework: [Playwright/Cypress/Selenium]
+Language: [JavaScript/TypeScript/Python]
+
+Include:
+- All assertions from expected results
+- Data-driven approach if applicable
+- Error handling and screenshots on failure
+- Comments explaining each step</div>
+
+                        <div class="code-block">
+<strong style="color: var(--accent-green);">API Test Automation (JavaScript)</strong>
+
+Generate automated API tests using [Jest/Mocha/Supertest] for:
+
+Endpoint: [ENDPOINT DETAILS]
+Test scenarios: [LIST SCENARIOS]
+
+Include:
+- Setup/teardown hooks
+- Authentication handling
+- Response schema validation
+- Proper assertions
+- Test data management</div>
+                    </div>
+                </div>
+
+                <h3>AI-Assisted QA Workflow</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>QA Activity</th>
+                                <th>How AI Helps</th>
+                                <th>Your Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Requirements Analysis</strong></td>
+                                <td>Identify gaps, ambiguities, generate clarifying questions</td>
+                                <td>Review suggestions, ask stakeholders, validate assumptions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Test Planning</strong></td>
+                                <td>Generate test approach, identify risk areas, estimate effort</td>
+                                <td>Apply domain knowledge, adjust priorities, finalize plan</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Test Design</strong></td>
+                                <td>Generate test cases, edge cases, test data</td>
+                                <td>Review for relevance, add domain-specific cases, prioritize</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Test Execution</strong></td>
+                                <td>Limited — AI can't execute tests for you</td>
+                                <td>Run tests, observe behavior, document findings</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bug Investigation</strong></td>
+                                <td>Suggest root causes, related areas, investigation steps</td>
+                                <td>Actually investigate, verify hypotheses, reproduce issues</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bug Reporting</strong></td>
+                                <td>Improve clarity, suggest missing info, format reports</td>
+                                <td>Provide accurate details, screenshots, context</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Documentation</strong></td>
+                                <td>Draft reports, format documents, summarize results</td>
+                                <td>Review accuracy, add insights, finalize</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Automation</strong></td>
+                                <td>Generate script templates, convert manual to automated</td>
+                                <td>Review code, debug, maintain, integrate into CI/CD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Best Practices for AI-Assisted QA</h3>
+
+                <div class="grid-2">
+                    <div class="card" style="border-left: 3px solid var(--accent-green);">
+                        <h5 style="color: var(--accent-green);">✓ Do</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Always review and validate AI output</li>
+                            <li>Use AI for brainstorming and first drafts</li>
+                            <li>Provide specific context for better results</li>
+                            <li>Iterate on prompts to improve output</li>
+                            <li>Combine AI suggestions with domain expertise</li>
+                            <li>Use AI to learn new testing techniques</li>
+                            <li>Save effective prompts for reuse</li>
+                        </ul>
+                    </div>
+
+                    <div class="card" style="border-left: 3px solid var(--accent-red);">
+                        <h5 style="color: var(--accent-red);">✗ Don't</h5>
+                        <ul style="font-size: 13px; margin: 0;">
+                            <li>Blindly copy-paste AI output without review</li>
+                            <li>Share sensitive/proprietary data with AI</li>
+                            <li>Assume AI understands your specific context</li>
+                            <li>Skip testing because AI "validated" it</li>
+                            <li>Rely on AI for final quality decisions</li>
+                            <li>Use AI-generated code without testing it</li>
+                            <li>Forget to apply critical thinking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="callout warning">
+                    <div class="callout-icon">⚠️</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Security & Confidentiality</div>
+                        <p class="callout-text">Never paste sensitive data into AI tools: customer PII, credentials, API keys, proprietary business logic, or security vulnerabilities. Use sanitized examples and placeholder data. Check your company's AI usage policy before using external AI tools with work data.</p>
+                    </div>
+                </div>
+
+                <h3>Prompt Engineering Tips for QA</h3>
+
+                <div class="code-block">
+<strong style="color: var(--accent-blue);">Prompt Structure Template</strong>
+
+<strong>Role:</strong> "You are a senior QA engineer with expertise in [DOMAIN]"
+
+<strong>Context:</strong> "I'm testing a [TYPE] application that [DESCRIPTION]. 
+The feature I'm testing [FEATURE DETAILS]."
+
+<strong>Task:</strong> "Generate/Create/Analyze/Review [SPECIFIC REQUEST]"
+
+<strong>Constraints:</strong> "Include [REQUIREMENTS]. Exclude [EXCLUSIONS]. 
+Focus on [PRIORITY AREAS]."
+
+<strong>Format:</strong> "Present the output as [TABLE/LIST/JSON/GHERKIN]
+with columns/fields for [STRUCTURE]"
+
+<strong>Example:</strong> "Here's an example of what I'm looking for: [EXAMPLE]"</div>
+
+                <div class="callout success">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-content">
+                        <div class="callout-title">Pro Tip: Iterative Refinement</div>
+                        <p class="callout-text">Don't expect perfect results on the first try. Start with a basic prompt, review the output, then refine: "Good start, but also include security test cases" or "Make the steps more specific" or "Add priority levels to each test case." Treat it like a conversation, not a one-shot request.</p>
                     </div>
                 </div>
             </section>
